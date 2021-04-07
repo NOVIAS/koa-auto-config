@@ -1,0 +1,21 @@
+{
+  "name": "koa_auto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "serve": "nodemon ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.1",
+    "mysql2": "^2.2.5",
+    "node-schedule": "^2.0.0",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "koa-router": "^10.0.0"
+  }
+}
