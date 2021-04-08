@@ -8,7 +8,11 @@
  */
 const controllerName = 'indexController';
 
-module.exports = app => ({
-    'get /': app.$controller[controllerName].index,
-    'get /detail': app.$controller[controllerName].detail
-})
+module.exports = {
+    'get /': async (app) => {
+        await app.$controller[controllerName].getIndex(app);
+    },
+    'get /detail': async (app) => {
+        await app.$controller[controllerName].getDetail(app);
+    },
+}

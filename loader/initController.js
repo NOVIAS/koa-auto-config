@@ -7,10 +7,11 @@
  *
  */
 
-function initController(load, app) {
+function initController(load) {
     const controllers = {};
     load('../controllers', (filename, controller) => {
-        controller = typeof controller === 'function' ? controller(app) : controller;
+        // 注释掉 是为了通过 router 将 app 实例传入
+        // controller = typeof controller === 'function' ? controller(app) : controller;
         controllers[filename] = controller;
     })
     return controllers;

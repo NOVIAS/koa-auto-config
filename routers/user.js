@@ -9,12 +9,10 @@
 const controllerName = 'userController'
 
 module.exports = {
-    'get /': async app => {
-        // app.ctx.body = '用户首页'
-        app.ctx.body = app.$controller[controllerName].getAllUser()
+    'get /': async (app) => {
+        await app.$controller[controllerName].getAllUser(app);
     },
-    'get /detail': async app => {
-        // app.ctx.body = '用户详情'
-        app.ctx.body = app.$controller[controllerName].UserDetail()
+    'get /detail': async (app) => {
+        await app.$controller[controllerName].UserDetail(app)
     }
 }

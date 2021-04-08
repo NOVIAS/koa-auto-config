@@ -13,8 +13,11 @@ function initRouter(load, app) {
     load('../routers', (fileName, routes) => {
         // 对于根目录不做处理
         const prefix = fileName === 'index' ? '' : `/${fileName}`;
-        // controller 传入 app
-        routes = typeof routes === 'function' ? routes(app) : routes;
+        // 使用 router 对象, 那么后续 controller / server 想要使用 app 就必须:
+        // 1: 构造路由函数时传入
+        // 2: 在 init controller / server 传入
+        // 注释掉为了简化, 以后 controller / server 只使用 app 参数即可
+        // routes = typeof routes === 'function' ? routes(app) : routes;
         Object.keys(routes).forEach(key => {
             const [method, path] = key.split(' ');
             // 加载路由 路径为文件名 + path
@@ -22,10 +25,11 @@ function initRouter(load, app) {
             // router[method](prefix + (path === '/' ? '' : path), routes[key]);
             router[method](prefix + (path === '/' ? '' : path),
                 // 利用柯里化的思想, 将传递的 ctx 转化为 app.ctx
-                async ctx => {
+                async (ctx) => {
                     app.ctx = ctx;
                     await routes[key](app);
-                });
+                }
+            );
         })
     })
     return router;

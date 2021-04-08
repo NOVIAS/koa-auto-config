@@ -8,7 +8,7 @@
  */
 module.exports = {
     async getAllUser(app) {
-        return 'getIndex 获取' + await app.$model.user.findAll();
+        return await app.$model.userModel.findAll();
     },
     async getUserDetail() {
         return 'getDetail 获取';

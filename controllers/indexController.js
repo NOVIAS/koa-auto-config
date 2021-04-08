@@ -8,11 +8,11 @@
  */
 const serviceName = 'indexService';
 
-module.exports = app => ({
-    index: async () => {
-        app.ctx.body = '首页 Ctrl' + await app.$service[serviceName].getIndex();
+module.exports = {
+    getIndex: async (app) => {
+        app.ctx.body = '首页 Ctrl' + await app.$service[serviceName].getIndex(app);
     },
-    detail: async () => {
-        app.ctx.body = '详细页面 Ctrl' + app.$service[serviceName].getDetail();
+    getDetail: async (app) => {
+        app.ctx.body = '详细页面 Ctrl' + app.$service[serviceName].getDetail(app);
     }
-})
+}

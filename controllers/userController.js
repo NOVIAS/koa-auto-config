@@ -8,11 +8,11 @@
  */
 const serviceName = 'userService';
 
-module.exports = app => ({
-    getAllUser: async () => {
-        app.ctx.body = '用户首页 Ctrl \n' + await app.$service[serviceName].getAllUser();
+module.exports = {
+    getAllUser: async (app) => {
+        app.ctx.body = await app.$service[serviceName].getAllUser(app);
     },
-    UserDetail: async () => {
+    UserDetail: async (app) => {
         app.ctx.body = '用户详细页面 Ctrl \n' + await app.$service[serviceName].getUserDetail();
     }
-})
+}

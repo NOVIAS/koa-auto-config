@@ -7,10 +7,10 @@
  *
  */
 module.exports = {
-    async getIndex() {
+    async getIndex(app) {
         return 'getIndex 获取';
     },
-    getDetail() {
+    getDetail(app) {
         return 'getDetail 获取';
     }
 }

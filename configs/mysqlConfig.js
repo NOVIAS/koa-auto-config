@@ -15,4 +15,11 @@ module.exports = {
         username: "Your username",
         password: "Your password",
     }
+    // db: {
+    //     dialect: "mysql",
+    //     host: "192.168.244.128",
+    //     database: "koa_auto",
+    //     username: "root",
+    //     password: "123456",
+    // }
 };

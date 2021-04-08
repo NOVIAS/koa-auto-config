@@ -22,7 +22,7 @@ class AutoWorker {
         this.$config = initConfig(loader);
         this.$model = initModel(loader, this);
         this.$service = initService(loader);
-        this.$controller = initController(loader, this);
+        this.$controller = initController(loader);
         this.$router = initRouter(loader, this);
     }
 
@@ -36,9 +36,10 @@ class AutoWorker {
     }
 
     start(port) {
+        // 执行中间件, 开启定时任务
         this.middlewareLoad();
+        // 通过 use 注入 ctx
         this.$app.use(this.$router.routes());
-        // 开启定时任务
         initSchedule(loader)
         this.$app.listen(port, (err) => {
             if (err) throw err;
